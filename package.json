@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Cold-FR/ENT_BOT#readme",
   "dependencies": {
+    "cryptr": "^6.0.2",
     "discord.js": "^13.3.1",
     "puppeteer": "^12.0.1",
     "discord-akairo": "github:Tricked-dev/discord-akairo"
