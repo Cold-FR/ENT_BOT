@@ -18,10 +18,12 @@
   "homepage": "https://github.com/Cold-FR/ENT_BOT#readme",
   "dependencies": {
     "cryptr": "^6.0.2",
+    "date-diff": "^1.0.2",
     "discord-akairo": "github:Tricked-dev/discord-akairo",
     "discord.js": "^13.3.1",
+    "nearest-date": "^1.0.1",
+    "node-fetch": "^2.6.6",
     "puppeteer": "^12.0.1",
-    "node-fetch": "^2.6.6"
+    "timediff": "^1.1.1"
   }
 }
-
