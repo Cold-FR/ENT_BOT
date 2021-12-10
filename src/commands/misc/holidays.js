@@ -1,10 +1,12 @@
 const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
-
+const nearest = require('nearest-date');
+const DateDiff = require('timediff');
+const timediff = require('timediff');
 class HolidaysCommand extends Command {
   constructor() {
     super('holidays', {
-      aliases: ['vacances', 'holiday']
+      aliases: ['vacances', 'holidays']
     });
   }
 
@@ -21,7 +23,8 @@ class HolidaysCommand extends Command {
     if(minute < 10) minute = '0' + minute;
     let second = date.getSeconds();
     if(second < 10) second = '0' + second;
-    let nextHolidays = new Date();
+    let holidays = [];
+    let holidaysDescr = [];
     
     fetch(`https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=start_date%3E=%22${year}-${month}-${day}T${hour}:${minute}:${second}%22&lang=fr&facet=description&facet=population&facet=start_date&facet=end_date&facet=zones&facet=annee_scolaire&refine.zones=Zone+B&refine.annee_scolaire=2021-2022&refine.location=Reims&exclude.population=Enseignants`, {
       method: 'GET'
@@ -29,12 +32,17 @@ class HolidaysCommand extends Command {
       return response.json();
     }).then((data) => {
       data.records.forEach(element => {
-        console.log('\n' + element.fields.description);
-        console.log(element.fields);
-
-        if((new Date() - new Date(element.fields.start_date)) < nextHolidays) nextHolidays = new Date(element.fields.start_date);
+        holidays.push(new Date(element.fields.start_date));
+        holidaysDescr.push(element.fields.description);
       });
-      console.log('\n' + nextHolidays)
+
+      const nearestHolidays = nearest(holidays, date);
+      const nearestHolidaysDate = new Date(holidays[nearestHolidays]);
+      nearestHolidaysDate.setDate(nearestHolidaysDate.getDate() - 1);
+      nearestHolidaysDate.setHours(18);
+      let timerHolidays = timediff(date, nearestHolidaysDate, 'MWDHm');
+
+      return message.reply(`Il reste **${timerHolidays.months}** mois, **${timerHolidays.weeks}** semaine(s), **${timerHolidays.days}** jour(s), **${timerHolidays.hours}** heure(s) et **${timerHolidays.minutes}** minute(s) avant les **${holidaysDescr[nearestHolidays]}** le **${nearestHolidaysDate.getDate()}/${nearestHolidaysDate.getMonth()}/${nearestHolidaysDate.getFullYear()} à ${nearestHolidaysDate.getHours()}:${'0' + nearestHolidaysDate.getMinutes()}** !`);
     });
   }
 }
