@@ -28,9 +28,11 @@ fetch(`https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-cale
 
   const nearestHolidays = nearest(holidays, date);
   const nearestHolidaysDate = new Date(holidays[nearestHolidays]);
+  console.log(nearestHolidaysDate)
   nearestHolidaysDate.setDate(nearestHolidaysDate.getDate() - 1);
   nearestHolidaysDate.setHours(18);
   let timerHolidays = timediff(date, nearestHolidaysDate, 'MWDHm');
+  console.log(nearestHolidaysDate.getMonth())
 
-  console.log(`Il reste ${timerHolidays.months} mois, ${timerHolidays.weeks} semaine(s), ${timerHolidays.days} jour(s), ${timerHolidays.hours} heure(s) et ${timerHolidays.minutes} minute(s) avant les ${holidaysDescr[nearestHolidays]} le ${nearestHolidaysDate.getDate()}/${nearestHolidaysDate.getMonth()}/${nearestHolidaysDate.getFullYear()} à ${nearestHolidaysDate.getHours()}:${'0' + nearestHolidaysDate.getMinutes()} !`);
+  console.log(`Il reste ${timerHolidays.months} mois, ${timerHolidays.weeks} semaine(s), ${timerHolidays.days} jour(s), ${timerHolidays.hours} heure(s) et ${timerHolidays.minutes} minute(s) avant les ${holidaysDescr[nearestHolidays]} le ${nearestHolidaysDate.getDate()}/${nearestHolidaysDate.getMonth() + 1}/${nearestHolidaysDate.getFullYear()} à ${nearestHolidaysDate.getHours()}:${'0' + nearestHolidaysDate.getMinutes()} !`);
 });

@@ -1,0 +1,146 @@
+{
+  "nhits": 4,
+  "parameters": {
+    "dataset": "fr-en-calendrier-scolaire",
+    "q": "start_date>=\"2022-01-07T16:16:00\"",
+    "lang": "fr",
+    "rows": 10,
+    "start": 0,
+    "facet": ["description", "population", "start_date", "end_date", "zones", "annee_scolaire"],
+    "refine": {
+      "location": "Reims"
+    },
+    "format": "json",
+    "timezone": "UTC"
+  },
+  "records": [{
+    "datasetid": "fr-en-calendrier-scolaire",
+    "recordid": "29bfce630b9bced4928880c5e835e4e7b11b701c",
+    "fields": {
+      "end_date": "2022-08-31T22:00:00+00:00",
+      "start_date": "2022-07-06T22:00:00+00:00",
+      "location": "Reims",
+      "annee_scolaire": "2021-2022",
+      "zones": "Zone B",
+      "description": "Vacances d'\u00c9t\u00e9",
+      "population": "\u00c9l\u00e8ves"
+    },
+    "record_timestamp": "2021-10-21T14:55:26.455000+00:00"
+  }, {
+    "datasetid": "fr-en-calendrier-scolaire",
+    "recordid": "61f84ed814eadaeb22bd214209091b8e02872ba3",
+    "fields": {
+      "end_date": "2022-05-27T22:00:00+00:00",
+      "start_date": "2022-05-25T22:00:00+00:00",
+      "location": "Reims",
+      "annee_scolaire": "2021-2022",
+      "zones": "Zone B",
+      "description": "Pont de l'Ascension",
+      "population": "-"
+    },
+    "record_timestamp": "2021-10-21T14:55:26.455000+00:00"
+  }, {
+    "datasetid": "fr-en-calendrier-scolaire",
+    "recordid": "42dad907f4cfc30ff46b96b78a2e879e9d13fc88",
+    "fields": {
+      "end_date": "2022-04-24T22:00:00+00:00",
+      "start_date": "2022-04-08T22:00:00+00:00",
+      "location": "Reims",
+      "annee_scolaire": "2021-2022",
+      "zones": "Zone B",
+      "description": "Vacances de Printemps",
+      "population": "-"
+    },
+    "record_timestamp": "2021-10-21T14:55:26.455000+00:00"
+  }, {
+    "datasetid": "fr-en-calendrier-scolaire",
+    "recordid": "8fa09ed3c441a653b34be0a5162603b6e5a3efb6",
+    "fields": {
+      "end_date": "2022-02-20T23:00:00+00:00",
+      "start_date": "2022-02-04T23:00:00+00:00",
+      "location": "Reims",
+      "annee_scolaire": "2021-2022",
+      "zones": "Zone B",
+      "description": "Vacances d'Hiver",
+      "population": "-"
+    },
+    "record_timestamp": "2021-10-21T14:55:26.455000+00:00"
+  }],
+  "facet_groups": [{
+    "name": "description",
+    "facets": [{
+      "name": "Pont de l'Ascension",
+      "count": 1,
+      "state": "displayed",
+      "path": "Pont de l'Ascension"
+    }, {
+      "name": "Vacances d'Hiver",
+      "count": 1,
+      "state": "displayed",
+      "path": "Vacances d'Hiver"
+    }, {
+      "name": "Vacances d'\u00c9t\u00e9",
+      "count": 1,
+      "state": "displayed",
+      "path": "Vacances d'\u00c9t\u00e9"
+    }, {
+      "name": "Vacances de Printemps",
+      "count": 1,
+      "state": "displayed",
+      "path": "Vacances de Printemps"
+    }]
+  }, {
+    "name": "population",
+    "facets": [{
+      "name": "-",
+      "count": 3,
+      "state": "displayed",
+      "path": "-"
+    }, {
+      "name": "\u00c9l\u00e8ves",
+      "count": 1,
+      "state": "displayed",
+      "path": "\u00c9l\u00e8ves"
+    }]
+  }, {
+    "name": "start_date",
+    "facets": [{
+      "name": "2022",
+      "count": 4,
+      "state": "displayed",
+      "path": "2022"
+    }]
+  }, {
+    "name": "end_date",
+    "facets": [{
+      "name": "2022",
+      "count": 4,
+      "state": "displayed",
+      "path": "2022"
+    }]
+  }, {
+    "name": "zones",
+    "facets": [{
+      "name": "Zone B",
+      "count": 4,
+      "state": "refined",
+      "path": "Zone B"
+    }]
+  }, {
+    "name": "annee_scolaire",
+    "facets": [{
+      "name": "2021-2022",
+      "count": 4,
+      "state": "refined",
+      "path": "2021-2022"
+    }]
+  }, {
+    "name": "location",
+    "facets": [{
+      "name": "Reims",
+      "count": 4,
+      "state": "refined",
+      "path": "Reims"
+    }]
+  }]
+}
