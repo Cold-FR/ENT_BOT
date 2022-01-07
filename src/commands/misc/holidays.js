@@ -1,7 +1,6 @@
 const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const nearest = require('nearest-date');
-const DateDiff = require('timediff');
 const timediff = require('timediff');
 class HolidaysCommand extends Command {
   constructor() {
