@@ -3,16 +3,11 @@ const nearest = require('nearest-date');
 const timediff = require('timediff');
 const date = new Date();
 const year = date.getFullYear();
-let month = date.getMonth() + 1;
-if(month < 10) month = '0' + month;
-let day = date.getDate();
-if(day < 10) day = '0' + day;
-let hour = date.getHours();
-if(hour < 10) hour = '0' + hour;
-let minute = date.getMinutes();
-if(minute < 10) minute = '0' + minute;
-let second = date.getSeconds();
-if(second < 10) second = '0' + second;
+const month = date.getMonth() + 1 < 10 ? '0' + parseInt(date.getMonth() + 1) : date.getMonth() + 1;
+const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+const second = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 let holidays = [];
 let holidaysDescr = [];
 
@@ -28,11 +23,14 @@ fetch(`https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-cale
 
   const nearestHolidays = nearest(holidays, date);
   const nearestHolidaysDate = new Date(holidays[nearestHolidays]);
-  console.log(nearestHolidaysDate)
   nearestHolidaysDate.setDate(nearestHolidaysDate.getDate() - 1);
   nearestHolidaysDate.setHours(18);
   let timerHolidays = timediff(date, nearestHolidaysDate, 'MWDHm');
-  console.log(nearestHolidaysDate.getMonth())
+  const dateHolidays = [
+    nearestHolidaysDate.getDate() < 10 ? '0' + nearestHolidaysDate.getDate() : nearestHolidaysDate.getDate(),
+    nearestHolidaysDate.getMonth() + 1 < 10 ? '0' + parseInt(nearestHolidaysDate.getMonth() + 1) : nearestHolidaysDate.getMonth() + 1,
+    nearestHolidaysDate.getMinutes() < 10 ? '0' + nearestHolidaysDate.getMinutes() : nearestHolidaysDate.getMinutes()
+  ];
 
-  console.log(`Il reste ${timerHolidays.months} mois, ${timerHolidays.weeks} semaine(s), ${timerHolidays.days} jour(s), ${timerHolidays.hours} heure(s) et ${timerHolidays.minutes} minute(s) avant les ${holidaysDescr[nearestHolidays]} le ${nearestHolidaysDate.getDate()}/${nearestHolidaysDate.getMonth() + 1}/${nearestHolidaysDate.getFullYear()} à ${nearestHolidaysDate.getHours()}:${'0' + nearestHolidaysDate.getMinutes()} !`);
+  return console.log(`Il reste ${timerHolidays.months} mois, ${timerHolidays.weeks} semaine(s), ${timerHolidays.days} jour(s), ${timerHolidays.hours} heure(s) et ${timerHolidays.minutes} minute(s) avant les ${holidaysDescr[nearestHolidays]} le Vendredi ${dateHolidays[0]}/${dateHolidays[1]}/${nearestHolidaysDate.getFullYear()} à ${nearestHolidaysDate.getHours()}:${dateHolidays[2]} !`);
 });
